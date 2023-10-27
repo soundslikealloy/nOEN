@@ -1,0 +1,18 @@
+[project]
+name = "nOEN"
+version = "0.0.1"
+authors = [
+  { name="Eloi Martinez-Rabert", email="eloi.mrp@gmail.com" },
+]
+description = "n-Order Ecological Network (nOEN) is a Python package to identify and quantify the ecological interaction(s) (pairwise and higher-order interactions) that shape a microbial community (i.e., the dominant ecological interactions). This package can also be used to evaluate the inter-relatedness of multibple variables and determine the specific tendency of a dataset."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/soundslikealloy/nOEN-py"
+"Bug Tracker" = "https://github.com/soundslikealloy/nOEN-py/issues"
