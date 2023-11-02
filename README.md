@@ -1,4 +1,4 @@
-# nOEN. n-Order Ecological Network analysis
+# nOEN. n-Order Ecological Network platform
 
 ![Logo](Logo/Banner.png)
 <br>*Contributors: Eloi Martinez-Rabert*
