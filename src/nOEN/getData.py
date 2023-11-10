@@ -21,6 +21,12 @@ import numpy as np
 from itertools import combinations as _comb
 
 def createDict(mainKeyName, iDict, info):
+    """
+    - :input:`mainKeyName` (str). Mode of dictionary creation ['data', 'comb', 'coeff', 'saveDict']
+    - :input:`iDict` (dict). Dictionary file
+    - :input:`info` (dict). New information included into dictionary file (iDict)
+
+    """
     if mainKeyName == 'data':
         iDict['data'] = info 
         print(' > Structure dataset: Done.')
@@ -51,6 +57,10 @@ def createDict(mainKeyName, iDict, info):
         
 
 def loadData(fileName):
+    """
+    - :input:`fileName` (str). Name of file where data and info are collected
+
+    """  
     print('\n>> Loading data...')
     # Path name of Data
     path = '../../Data/'
@@ -86,7 +96,7 @@ def loadData(fileName):
         coeffDict[nameK2] = {}
         for i_c in c:
             nameK3_comb = "_".join(varNames[i_c - 1])
-            coeffDict[nameK2][nameK3_comb] = {'iD': i_c, 'D': i, 'reliablePoint': relP, 'numObs': [], 'coeffinfo': {'signs1': [], 'signs2': [], 'deltas': [], 'd_pval': [], 'RKtau': [], 'RKt_pval': []}}
+            coeffDict[nameK2][nameK3_comb] = {'iD': i_c, 'D': i, 'reliablePoint': relP, 'numObs': [], 'coeffInfo': {'signs1': [], 'signs2': [], 'deltas': [], 'd_pval': [], 'RKtau': [], 'RKt_pval': []}}
     combDict['numcoeff'] = nCoef
     
     leDict = createDict('comb', leDict, combDict)
