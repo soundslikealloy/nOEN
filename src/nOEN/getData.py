@@ -9,9 +9,11 @@
 """
 This module contain functions to get data for various purposes.
 
+- :func:`createDict` creates and saves the dictionary with all information and data sets from Excel File (nameFile.xlsx).
+
 - :func:`loadData` for getting the whole information and data sets from Excel file (nameFile.xlsx). Please see README file for more information.
 
-- :func:`loadResults` for getting the nOEN outcomes of the data set already analysed and plot them
+- :func:`loadResults` for getting the nOEN outcomes of the data set already analysed and plot them.
 
 """
 
@@ -22,9 +24,9 @@ from itertools import combinations as _comb
 
 def createDict(mainKeyName, iDict, info):
     """
-    - :input:`mainKeyName` (str). Mode of dictionary creation ['data', 'comb', 'coeff', 'saveDict']
-    - :input:`iDict` (dict). Dictionary file
-    - :input:`info` (dict). New information included into dictionary file (iDict)
+    - :input:`mainKeyName` (str). Mode of dictionary creation ['data', 'comb', 'coeff', 'saveDict'].
+    - :input:`iDict` (dict). Dictionary file.
+    - :input:`info` (dict). New information included into dictionary file (iDict).
 
     """
     if mainKeyName == 'data':
@@ -56,9 +58,10 @@ def createDict(mainKeyName, iDict, info):
         print(' > No expected Structure: `' + mainKeyName + '`')
     print('')
 
+
 def loadData(fileName):
     """
-    - :input:`fileName` (str). Name of file where data and info are collected
+    - :input:`fileName` (str). Name of file with data and info.
 
     """  
     print('\n>> Loading data...')

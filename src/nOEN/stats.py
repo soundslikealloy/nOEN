@@ -9,11 +9,11 @@
 """
 This module contain functions to perform multivariate rank correlation coefficient.
 
-- :func:`formalism_Oh` for the computation of the summation of individual data trend coefficient calculation
+- :func:`formalism_Oh` for the computation of the summation of individual data trend coefficient calculation.
 
-- :func:`multivarcorr` for the calculus of Tau-N coefficients
+- :func:`multivarcorr` for the calculus of Tau-N coefficients.
 
-- :func:`nOEN` for n-Order Ecological Network analysis (nOEN)
+- :func:`nOEN` for n-Order Ecological Network analysis (nOEN).
 
 """
 
@@ -26,10 +26,10 @@ from getData import loadResults, createDict
 
 def formalism_Oh(N, numObs, dataset, paired_Oh, binomial):
     """
-    - :input:`N` (int). Number of paired orthants and delta coefficients
-    - :input:`numObs` (int). Number of observations
-    - :input:`paired_Oh` (np.array). Signs of each paired orthant
-    - :input:`binomial` (int). Binomial coefficient
+    - :input:`N` (int). Number of paired orthants and delta coefficients.
+    - :input:`numObs` (int). Number of observations.
+    - :input:`paired_Oh` (np.array). Signs of each paired orthant.
+    - :input:`binomial` (int). Binomial coefficient.
 
     """
     # Definition of variables
@@ -63,9 +63,9 @@ def formalism_Oh(N, numObs, dataset, paired_Oh, binomial):
 
 def multivarcorr(D, dataset, numObs):
     """
-    - :input:`D` (int). Dimension/number of joint variables
+    - :input:`D` (int). Dimension/number of joint variables.
     - :input:`dataset` (np.array).
-    - :input:`numObs` (int). Number of observations
+    - :input:`numObs` (int). Number of observations.
 
     """
     binomial = math.comb(numObs, 2)                                 # Binomial coeficient
@@ -103,9 +103,9 @@ def multivarcorr(D, dataset, numObs):
 
 def nOEN(dDict, Dim = 'All', infoInocula = False):
     """
-    - :input:`dDict` (dict). Dictionary with dataset and information
-    - :input:`Dim` (list). List with dimensions we want to test (default: 'All')
-    - :input:`infoInocula` (bool). Boolen to indicate if dataset include information at time 0 (i.e., inocula)
+    - :input:`dDict` (dict). Dictionary with dataset and information.
+    - :input:`Dim` (list). List with dimensions we want to test (default: 'All').
+    - :input:`infoInocula` (bool). Boolen to indicate if dataset include information at time 0 (i.e., inocula).
     
     """
     print('\n>> Running nOEN...')
