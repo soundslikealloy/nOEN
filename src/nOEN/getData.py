@@ -114,6 +114,16 @@ def loadResults(fileName):
     return readResults
 
 
+def writeResults(fileName, fformat = 'Excel'):
+    """
+    - :input:`fileName` (str). Name of file with data and info.
+    - :input:`fformat` (str). Format of results file ['Excel', 'csv', 'txt'(?) ...].
+
+    """
+    # Lorem ipsum
+    return 0
+
+
 #-DEBUGGING
 # loadData('data-py')
 # results = loadResults('data-py')
