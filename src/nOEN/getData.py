@@ -43,7 +43,7 @@ def createDict(mainKeyName, iDict, info):
         path = '../../Results/'
         fullPathSave = path + info + '.npy'
         if os.path.isfile(fullPathSave) == True:
-            val = input('   Do you want to overwrite `' + info + '.npy`? [Y/N]: ')
+            val = input(' > Do you want to overwrite `' + info + '.npy`? [Y/N]: ')
             if val == 'Y' or val == 'y':
                 np.save(fullPathSave, iDict) 
                 print(' > Data structure saved - `' + info +'.npy`.')
@@ -54,7 +54,7 @@ def createDict(mainKeyName, iDict, info):
             print(' > Data structure saved - `' + info +'.npy`.')
     else:
         print(' > No expected Structure: `' + mainKeyName + '`')
-        
+    print('')
 
 def loadData(fileName):
     """
@@ -65,12 +65,10 @@ def loadData(fileName):
     # Path name of Data
     path = '../../Data/'
     fullPath = path + fileName + '.xlsx'
-    
     # Initialization 
     leDict = {}             # Full dictionary (`data` + `comb` + `coeff`)
     combDict = {}           # Dictionary of combinations (`comb`)
     coeffDict = {}          # Dictionary of Tau-N coefficients (`coeff`)
-    
     # Structure dataset (data)
     di = pd.read_excel(fullPath, sheet_name = 't_0')
     df = pd.read_excel(fullPath, sheet_name = 't_max')
@@ -78,9 +76,7 @@ def loadData(fileName):
     di = np.array(di)
     df = np.array(df)
     numVar = len(varNames)
-    
     leDict = createDict('data', leDict, {'inocula': di, 'final': df, 'varNames': varNames, 'numVar': numVar})
-
     # Structures combinations & Tau-N coefficients (`comb`, `coeff`)
     v = np.arange(1, numVar+1)
     nCoef = []
@@ -98,10 +94,8 @@ def loadData(fileName):
             nameK3_comb = "_".join(varNames[i_c - 1])
             coeffDict[nameK2][nameK3_comb] = {'iD': i_c, 'D': i, 'reliablePoint': relP, 'numObs': [], 'coeffInfo': {'signs1': [], 'signs2': [], 'deltas': [], 'd_pval': [], 'RKtau': [], 'RKt_pval': []}}
     combDict['numcoeff'] = nCoef
-    
     leDict = createDict('comb', leDict, combDict)
     leDict = createDict('coeff', leDict, coeffDict)
-    
     # Save structure
     createDict('saveDict', leDict, fileName)
     print('>> Loading done.')
@@ -116,8 +110,9 @@ def loadResults(fileName):
 
     return readResults
 
+
 #-DEBUGGING
-loadData('data-py')
-results = loadResults('data-py')
-print(results)
+# loadData('data-py')
+# results = loadResults('data-py')
+# print(results)
 #----------
