@@ -121,6 +121,7 @@ def writeResults(fileName, ftype = 'Excel'):
 
     """
     # Lorem ipsum
+    
     return 0
 
 
