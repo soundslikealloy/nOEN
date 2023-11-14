@@ -114,10 +114,10 @@ def loadResults(fileName):
     return readResults
 
 
-def writeResults(fileName, fformat = 'Excel'):
+def writeResults(fileName, ftype = 'Excel'):
     """
     - :input:`fileName` (str). Name of file with data and info.
-    - :input:`fformat` (str). Format of results file ['Excel', 'csv', 'txt'(?) ...].
+    - :input:`ftype` (str). Format of results file ['Excel', 'csv', 'txt'(?), ...].
 
     """
     # Lorem ipsum
