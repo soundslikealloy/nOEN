@@ -162,6 +162,6 @@ def writeResults(fileName):
 # loadData('data-py')
 # results = loadResults('data-py')
 # print(results)
-# # Write results
+# # Write results to Excel
 # writeResults('data-py')
 #----------
