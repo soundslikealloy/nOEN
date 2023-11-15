@@ -114,19 +114,52 @@ def loadResults(fileName):
     return readResults
 
 
-def writeResults(fileName, ftype = 'Excel'):
+def writeResults(fileName):
     """
     - :input:`fileName` (str). Name of file with data and info.
-    - :input:`ftype` (str). Format of results file ['Excel', 'csv', 'txt'(?), ...].
 
     """
-    # Lorem ipsum
-    
-    return 0
+    path = '../../Results/'
+    fullPathFile = path + fileName + '.npy'
+    fullPathSave = path + fileName + '_results.xlsx'
+    if os.path.isfile(fullPathFile) == True:
+        rDict = loadResults(fileName)
+        D = rDict['data']['numVar']
+        numComb = rDict['comb']['numcoeff']
+        print('\n>> Writing results ' + '`' + fileName + '.npy`...')
+        # Data Sheet
+        data = rDict['data']['final']
+        varNames = rDict['data']['varNames']
+        nd = data.shape[0]
+        df = pd.DataFrame(data, columns = varNames.tolist(), index = np.arange(1, nd+1))
+        with pd.ExcelWriter(fullPathSave) as writer:
+            df.to_excel(writer, sheet_name='Data')
+            for d in range(2, D+1):
+                sName = 'D' + str(d)
+                infoR = pd.DataFrame(np.array(['· Dimension ' + str(d), '· Reliable point: ' + str(2/(2**d)), '· Number of observations: ' + str(nd), '· Number of var combinations: ' + str(numComb[d-2])]))
+                infoR.to_excel(writer, sheet_name = sName, index = False, header = False)
+                headR = ['[ ' + '± ' * d + ']', '[ ' + '∓ ' * d + ']', 'δ coefficients', '𝜏 coefficients', 'p-values']
+                for c in rDict['comb'][sName]:
+                    sRow = writer.sheets[sName].max_row
+                    jvarName = "_".join(varNames[c - 1])
+                    dvarName = pd.DataFrame([jvarName])
+                    dvarName.to_excel(writer, sheet_name = sName, startrow = sRow+1, index = False, header = False)
+                    r = rDict['coeff'][sName][jvarName]['coeffInfo']
+                    if d == 2:
+                        rM = [r['signs1'][0], r['signs2'][0], '-', r['RKtau'], r['RKt_pval']]
+                        R = pd.DataFrame([rM], columns = headR)
+                    else:
+                        rM = np.array([r['signs1'], r['signs2'], r['deltas'], r['RKtau'], r['RKt_pval']]).T
+                        R = pd.DataFrame(rM, columns = headR)
+                    R.to_excel(writer, sheet_name = sName, startrow = sRow+2, index = False)
+        print('>> Writing done.')
+    else:
+        print(' > `' + fileName + '.npy` does not exist.')
 
 
 #-DEBUGGING
 # loadData('data-py')
 # results = loadResults('data-py')
 # print(results)
+# writeResults('data-py')
 #----------
