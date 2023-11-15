@@ -138,10 +138,10 @@ def nOEN(dDict, Dim = 'All', infoInocula = False):
                 dDict['coeff'][D_field][nameK3_comb]['numObs'] = numObs
                 dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['signs1'] = symbolMatrix_up
                 dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['signs2'] = symbolMatrix_down
-                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['deltas'] = deltas
-                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['d_pval'] = d_pval
-                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['RKtau'] = RKtau
-                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['RKt_pval'] = RKt_pval
+                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['deltas'] = np.around(deltas, decimals = 4)
+                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['d_pval'] = np.around(d_pval, decimals = 6)
+                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['RKtau'] = np.around(RKtau, decimals = 4)
+                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['RKt_pval'] = np.around(RKt_pval, decimals = 6)
     print('>> nOEN done.')
     
     return dDict
