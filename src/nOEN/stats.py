@@ -20,7 +20,7 @@ This module contain functions to perform multivariate rank correlation coefficie
 import numpy as np
 import math
 from scipy.stats import norm, gmean
-from itertools import product, permutations
+from itertools import product
 
 from getData import loadResults, createDict
 
