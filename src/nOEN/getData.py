@@ -156,7 +156,7 @@ def writeResults(fileName):
                         R.to_excel(writer, sheet_name = sName, startrow = sRow+2, index = False)
             print('>> Writing done.')
         else:
-            print(' > Results not written. If you don\'t want to overwrite results files, change the name of existing Excel or make a copy into another folder.')
+            print(' > Results not written. If you don\'t want to lose existing results files, change the name of existing Excel or make a copy into another folder before.')
     else:
         print(' > `' + fileName + '.npy` does not exist.')
 
