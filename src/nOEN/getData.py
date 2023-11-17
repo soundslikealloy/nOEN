@@ -128,7 +128,7 @@ def writeResults(fileName):
             rDict = loadResults(fileName)
             D = rDict['data']['numVar']
             numComb = rDict['comb']['numcoeff']
-            print('\n>> Writing results ' + '`' + fileName + '.npy` to `' + fileName + '_results.xlsx`')
+            print('\n>> Writing results ' + '`' + fileName + '.npy` to `' + fileName + '_results.xlsx`.')
             # Data Sheet
             data = rDict['data']['final']
             varNames = rDict['data']['varNames']
