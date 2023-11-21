@@ -11,6 +11,8 @@ This module contain functions to run nOEN in Command Prompt.
 
 """
 
+import argparse
+
 from getData import loadResults, loadData, createDict
 from stats import nOEN
 
@@ -19,13 +21,19 @@ parser = argparse.ArgumentParser(description = 'n-Order Ecological Network platf
 
 parser.add_argument('-dim', dest = 'dim', default = 'All', action = 'store',
                     help = '[list] or [str] Dimensions we want to test.Write `All` if you want to test all of them (default: `All`).')
-# parser.add_argument('-nomismatches', dest = 'noMismatches', default = False, action = 'store_true',
-#                     help = '[bool] No mismatches analysis is performed.')
-# parser.add_argument('-onlymismatches', dest = 'figureOnly', default = False, action = 'store_true',
-#                     help = '[bool] Only mismatches results are saved. FASTA and alignment files are not saved.')
+# parser.add_argument('-infoinocula', dest = 'infoInocula', default = False, action = 'store_true',
+#                     help = '[bool] Information of inocula (or time 0) provided.')
+# parser.add_argument('-nofigure', dest = 'noFigure', default = False, action = 'store_true',
+#                     help = '[bool] No plotting, only outcomes from nOEN are saved.')
+# parser.add_argument('-onlyfigure', dest = 'figureOnly', default = False, action = 'store_true',
+#                     help = '[bool] Only plotting of existing results.')
+# parser.add_argument('-plottype', dest = 'plotType', default = 'All', action = 'store',
+#                     help = '[str] Select plotting style of nOEN outcomes ['squarePlot', 'concentricPlot', 'getNetwork'].')
 args = parser.parse_args()
 dims = args.dim
-# noMismatches = args.noMismatches
+# infoInocula = args.infoInocula
+# noFigure = args.noFigure
 # figureOnly = args.figureOnly
+# plotType = args.plotType
 
 # Lorem ipsum...
