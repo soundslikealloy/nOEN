@@ -13,27 +13,49 @@ This module contain functions to run nOEN in Command Prompt.
 
 import argparse
 
-from getData import loadResults, loadData, createDict
+from getData import loadResults, loadData, createDict, writeResults
 from stats import nOEN
 
 # Command Line Interface (CLI)
-parser = argparse.ArgumentParser(description = 'n-Order Ecological Network platform (nOEN). Statistical platform to identify pairwise and higher-order interactions.')
-
-parser.add_argument('-dim', dest = 'dim', default = 'All', action = 'store',
-                    help = '[list] or [str] Dimensions we want to test.Write `All` if you want to test all of them (default: `All`).')
-# parser.add_argument('-infoinocula', dest = 'infoInocula', default = False, action = 'store_true',
-#                     help = '[bool] Information of inocula (or time 0) provided.')
-# parser.add_argument('-nofigure', dest = 'noFigure', default = False, action = 'store_true',
+parser = argparse.ArgumentParser(description = '> n-Order Ecological Network platform (nOEN). Statistical platform to identify pairwise and higher-order interactions.')
+# Arguments
+parser.add_argument('-filename', dest = 'fileName', required = True, action = 'store',
+                    help = '[str] Name of file with data and info (REQUIRED & CASE-SENSITIVE)')
+parser.add_argument('-dim', dest = 'dim', default = 0, nargs='+', type = int, action = 'store',
+                    help = '[list] Dimensions we want to test. Numbers separated by spaces without parentesis or brakets.')
+parser.add_argument('-noExcel', dest = 'noExcel', default = True, action = 'store_false',
+                    help = '[bool] Create Excel file with nOEN results (default: True).')
+parser.add_argument('-infoinocula', dest = 'infoInocula', default = False, action = 'store_true',
+                    help = '[bool] Information of inocula (or time 0) provided (default: False).')
+# parser.add_argument('-nofigure', dest = 'noFigure', default = True, action = 'store_true',
 #                     help = '[bool] No plotting, only outcomes from nOEN are saved.')
-# parser.add_argument('-onlyfigure', dest = 'figureOnly', default = False, action = 'store_true',
+# parser.add_argument('-onlyfigure', dest = 'figureOnly', default = True, action = 'store_true',
 #                     help = '[bool] Only plotting of existing results.')
 # parser.add_argument('-plottype', dest = 'plotType', default = 'All', action = 'store',
 #                     help = '[str] Select plotting style of nOEN outcomes ['squarePlot', 'concentricPlot', 'getNetwork'].')
 args = parser.parse_args()
-dims = args.dim
-# infoInocula = args.infoInocula
+
+fileName = args.fileName
+dim = args.dim
+Excel = args.noExcel
+infoInocula = args.infoInocula
 # noFigure = args.noFigure
 # figureOnly = args.figureOnly
 # plotType = args.plotType
 
-# Lorem ipsum...
+#-DEBUGGING (argparse)
+print('>> Arguments')
+print(' > Dims: ' + str(dim))
+print(' > InfoInocula: ' + str(infoInocula))
+print(' > CreateExcelWithResults: ' + str(Excel))
+#----------
+
+# Read data from Excel and create nested dictionary
+loadDict = loadData(fileName)
+# Run nOEN
+leDict = nOEN(loadDict, dim, infoInocula)
+# Save results in .pyn
+createDict('saveDict', leDict, fileName)
+# Create Excel file with results
+if Excel:
+    writeResults(fileName, dim)
