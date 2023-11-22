@@ -101,10 +101,10 @@ def multivarcorr(D, dataset, numObs):
     return (RKtau, RKt_pval, deltas, d_pval, symbolMatrix_up, symbolMatrix_down)
 
 
-def nOEN(dDict, Dim = 'All', infoInocula = False):
+def nOEN(dDict, Dim = 0, infoInocula = False):
     """
     - :input:`dDict` (dict). Dictionary with dataset and information.
-    - :input:`Dim` (list). List with dimensions we want to test (default: 'All').
+    - :input:`Dim` (list). List with dimensions we want to test (default: 0 -> 'All').
     - :input:`infoInocula` (bool). Boolen to indicate if dataset include information at time 0 (i.e., inocula).
     
     """
@@ -113,7 +113,7 @@ def nOEN(dDict, Dim = 'All', infoInocula = False):
     numVar = dDict['data']['numVar']
     varNames = dDict['data']['varNames']
     
-    if Dim == 'All' or Dim == 'all':
+    if Dim == 0:
         vD = np.arange(2, numVar+1)
     else:
         vD = Dim
@@ -142,6 +142,7 @@ def nOEN(dDict, Dim = 'All', infoInocula = False):
                 dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['d_pval'] = np.around(d_pval, decimals = 6)
                 dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['RKtau'] = np.around(RKtau, decimals = 4)
                 dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['RKt_pval'] = np.around(RKt_pval, decimals = 6)
+                dDict['data']['results'] = True
     print('>> nOEN done.')
     
     return dDict
