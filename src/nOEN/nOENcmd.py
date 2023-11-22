@@ -23,10 +23,11 @@ parser.add_argument('-filename', dest = 'fileName', required = True, action = 's
                     help = '[str] Name of file with data and info (REQUIRED & CASE-SENSITIVE)')
 parser.add_argument('-dim', dest = 'dim', default = 0, nargs='+', type = int, action = 'store',
                     help = '[list] Dimensions we want to test. Numbers separated by spaces without parentesis or brakets.')
-parser.add_argument('-noExcel', dest = 'noExcel', default = True, action = 'store_false',
-                    help = '[bool] Create Excel file with nOEN results (default: True).')
 parser.add_argument('-infoinocula', dest = 'infoInocula', default = False, action = 'store_true',
                     help = '[bool] Information of inocula (or time 0) provided (default: False).')
+parser.add_argument('-noExcel', dest = 'noExcel', default = True, action = 'store_false',
+                    help = '[bool] Create Excel file with nOEN results (default: True).')
+parser.add_argument('-onlyExcel', dest = 'onlyExcel', default = False, action = 'store_true')
 # parser.add_argument('-nofigure', dest = 'noFigure', default = True, action = 'store_true',
 #                     help = '[bool] No plotting, only outcomes from nOEN are saved.')
 # parser.add_argument('-onlyfigure', dest = 'figureOnly', default = True, action = 'store_true',
@@ -37,8 +38,9 @@ args = parser.parse_args()
 
 fileName = args.fileName
 dim = args.dim
-Excel = args.noExcel
 infoInocula = args.infoInocula
+Excel = args.noExcel
+onlyExcel = args.onlyExcel
 # noFigure = args.noFigure
 # figureOnly = args.figureOnly
 # plotType = args.plotType
@@ -48,14 +50,16 @@ print('>> Arguments')
 print(' > Dims: ' + str(dim))
 print(' > InfoInocula: ' + str(infoInocula))
 print(' > CreateExcelWithResults: ' + str(Excel))
+print(' > OnlyExcel (read previous results): ' + str(onlyExcel))
 #----------
 
 # Read data from Excel and create nested dictionary
 loadDict = loadData(fileName)
 # Run nOEN
-leDict = nOEN(loadDict, dim, infoInocula)
-# Save results in .pyn
-createDict('saveDict', leDict, fileName)
+if not onlyExcel:
+    leDict = nOEN(loadDict, dim, infoInocula)
+    # Save results in .pyn
+    createDict('saveDict', leDict, fileName)
 # Create Excel file with results
 if Excel:
     writeResults(fileName, dim)
