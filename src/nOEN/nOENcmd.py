@@ -22,7 +22,7 @@ parser = argparse.ArgumentParser(description = '> n-Order Ecological Network pla
 parser.add_argument('-filename', dest = 'fileName', required = True, action = 'store',
                     help = '[str] Name of file with data and info (REQUIRED & CASE-SENSITIVE)')
 parser.add_argument('-dim', dest = 'dim', default = 0, nargs='+', type = int, action = 'store',
-                    help = '[list] Dimensions we want to test. Numbers separated by spaces without parentesis or brakets.')
+                    help = '[list] Dimensions we want to test. Numbers separated by spaces without parentesis or brakets (default: 0 -> \'All\').')
 parser.add_argument('-infoinocula', dest = 'infoInocula', default = False, action = 'store_true',
                     help = '[bool] Information of inocula (or time 0) provided (default: False).')
 parser.add_argument('-noExcel', dest = 'noExcel', default = True, action = 'store_false',
