@@ -16,6 +16,7 @@ For **higher-order interactions** (τ<sub>N</sub> coefficients), a value of +1 i
 <p align="center">
     <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/7e6217b3-2198-49e2-b624-fa7f002aba40">
 </p>
+
 ____________________________
 
 ## Before having fun...
