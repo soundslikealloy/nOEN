@@ -70,7 +70,7 @@ pip install scipy
        <tr><td>-h, --help</b></td><td>Show help message and optional arguments.</b></td></tr>
        <tr><td>-dim</td><td>Dimensions we want to test. Numbers separated by spaces without parentesis or brakets.</td></tr>
        <tr><td>-infoinocula</td><td>Information of inocula (or time 0) provided.</td></tr>
-       <tr><td>-noExcel</td><td>Only save nOEN results in '.npy' format.</td></tr>
+       <tr><td>-noExcel</td><td>Save nOEN results only in '.npy' format.</td></tr>
        <tr><td>-onlyExcel</td><td> Create Excel file with existing nOEN results (saved in '.npy' format).</td></tr>
    </table>
 
