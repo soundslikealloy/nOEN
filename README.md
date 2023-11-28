@@ -47,7 +47,7 @@ pip install pandas
 ```
 pip install scipy
 ```
-## :clipboard: Instructions to Download and Run IN-NGSa
+## :clipboard: Instructions to Download and Run nOEN
 1. Download .zip code. Last version: `v0.1`. [Download package](https://github.com/soundslikealloy/nOEN-py).
 2. Extract files to a destination (:bulb: recommendation - Desktop).
 3. Open **Anaconda Prompt or Terminal**.
