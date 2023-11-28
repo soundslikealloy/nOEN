@@ -47,18 +47,18 @@ pip install pandas
 ```
 pip install scipy
 ```
-## :clipboard: Instructions to Run nOEN using Command Line Interface (CLI)
+## :clipboard: Instructions to run nOEN using Command Line Interface (CLI)
 1. Download .zip code. Last version: `v0.1`. [Download package](https://github.com/soundslikealloy/nOEN-py).
 2. Extract files to a destination (:bulb: Recommendation - Desktop).
 3. Open **Anaconda Prompt or Terminal**.
 4. Go to the **Code folder<sup>2</sup>** using `cd` command (more info about [Using Terminal](https://docs.anaconda.com/ae-notebooks/user-guide/basic-tasks/apps/use-terminal/?highlight=Using%20Terminal)).
     &#09;<br><sup><sup>2</sup>Code folder: folder with `nOENcmd.py` file (Folder: `/src/nOEN`). </sup>
-5. _Lorem ipsum..._
+5. Create Excel file with data following the information included in 'Information Sheet' of template file (`/Data/Template/template.xlsx`) or example file (`/Data/example.xlsx`). You can use any of them. Be sure that data files are in `/Data` folder. The name of file (without extension .xlsx) will be used to call the nOEN package (see next point). 
 6. Execute **nOEN** with the command line:
    ```
    python nOENcmd.py -filename FILENAME
    ```
-   Where `FILENAME` is the name of Excel (from `/Data` folder) you want analyze (without extension '.xlsx').
+   Where `FILENAME` is the name of Excel (from `/Data` folder) you want analyze (without extension '.xlsx'). Results from **nOEN** are saved in .npy (as `FILENAME.npy`) and/or .xlsx (as `FILENAME_results.xlsx`) format in the `/Results` folder.
    For example:
    ```
    python nOENcmd.py -filename template
@@ -81,6 +81,9 @@ pip install scipy
    python nOENcmd.py -filename template -noExcel
    python nOENcmd.py -filename template -dim 2 4 5 -onlyExcel
    ```
+
+## Results visualization
+:construction: Coming soon...
 
 ## Contact
 
