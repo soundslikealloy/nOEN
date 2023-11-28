@@ -84,7 +84,7 @@ pip install scipy
    python nOENcmd.py -filename template -dim 2 4 5 -onlyExcel
    ```
 
-## Results visualization
+## Results Visualization
 :construction: Coming soon...
 
 ## Contact
