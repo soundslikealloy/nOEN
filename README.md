@@ -11,7 +11,7 @@ The multivariate Kendall's Tau (τ<sub>N</sub>) ranges from -1 to +1, inclusive.
     <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/8a9bf5dd-1a5f-485f-93ac-25cd32cc973f">
 </p>
 
-For **higher-order interactions** (τ<sub>N</sub> coefficients), a value of +1 indicates that the _N_ ranking of datasets follows the particular tendency (represented with +/↑ and -/↓), whereas a value of -1 indicatest that the _N_ ranking of datasets follows another tendency entirely. A value of 0 indicates no correlaion among datasets. A unique τ<sub>N</sub> coefficient is associated to a specific data trend. For example, for the dataset in template file (`/Data/Template/template.xlsx`) or example file (`/Data/example.xlsx`):
+For **higher-order interactions** (τ<sub>N</sub> coefficients), a value of +1 indicates that the _N_ ranking of datasets follows the particular tendency (represented with +/↑ and -/↓), whereas a value of -1 indicatest that the _N_ ranking of datasets follows another tendency entirely. A value of 0 indicates no correlaion among datasets. A unique τ<sub>N</sub> coefficient is associated to a specific data trend. For example, for the dataset in template file (`/Data/Template/template.xlsx`) and example file (`/Data/example.xlsx`):
 
 <p align="center">
     <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/7e6217b3-2198-49e2-b624-fa7f002aba40">
