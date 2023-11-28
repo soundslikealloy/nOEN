@@ -4,6 +4,8 @@
 <br>*Contributors: Eloi Martinez-Rabert*
 
 _Lorem ipsum..._
+
+Reference of multivariate Kendall's Tau[^1].
 ____________________________
 
 ## Before having fun...
