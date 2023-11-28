@@ -26,8 +26,9 @@ parser.add_argument('-dim', dest = 'dim', default = 0, nargs='+', type = int, ac
 parser.add_argument('-infoinocula', dest = 'infoInocula', default = False, action = 'store_true',
                     help = '[bool] Information of inocula (or time 0) provided (default: False).')
 parser.add_argument('-noExcel', dest = 'noExcel', default = True, action = 'store_false',
-                    help = '[bool] Create Excel file with nOEN results (default: True).')
-parser.add_argument('-onlyExcel', dest = 'onlyExcel', default = False, action = 'store_true')
+                    help = '[bool] Only save nOEN results in .npy format (default: True).')
+parser.add_argument('-onlyExcel', dest = 'onlyExcel', default = False, action = 'store_true',
+                    help = '[bool] Create Excel file with existing nOEN results (default: False)')
 # parser.add_argument('-nofigure', dest = 'noFigure', default = True, action = 'store_true',
 #                     help = '[bool] No plotting, only outcomes from nOEN are saved.')
 # parser.add_argument('-onlyfigure', dest = 'figureOnly', default = True, action = 'store_true',
