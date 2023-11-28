@@ -1,11 +1,21 @@
-# nOEN. n-Order Ecological Network platform
+# nOEN. n-Order Ecological Network
 
 ![Logo](Logo/Banner.png)
 <br>*Contributors: Eloi Martinez-Rabert*
 
-_Lorem ipsum..._
+n-Order Ecological Network (nOEN) is a statistical platform to identify and analyze the ecological interactions (pairwise and higher-order) that shape the community assembly. This platform is based on the multivariate Kendall's Tau (Tau-N)[^1], in which is a non-parametric correlation measure between more than two variables based on _paired orthants_. 
 
-Reference of multivariate Kendall's Tau[^1].
+The multivariate Kendall's Tau (τ<sub>N</sub>) ranges from -1 to +1, inclusive. For **pairwise interactions** (corresponding to conventional Kendall's Tau, τ)[^2], a value of -1 indicates that one dataset ranking is the reverse of the other (i.e., negative correlation), whereas a value of +1 indicates that the two rankings of datasets are the same (i.e., positive correlation). A value of 0 indicates no correlation between datasets. The ecological interpretation of Kendall's Tau (τ coefficient) depends on the type of ecological interaction:
+
+<p align="center">
+    <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/8a9bf5dd-1a5f-485f-93ac-25cd32cc973f">
+</p>
+
+For **higher-order interactions** (τ<sub>N</sub> coefficients), a value of +1 indicates that the _N_ ranking of datasets follows the particular tendency (represented with +/↑ and —/↓), whereas a value of -1 indicatest that the _N_ ranking of datasets follows another tendency entirely. A value of 0 indicates no correlaion among datasets. A unique τ<sub>N</sub> coefficient is associated to a specific data trend. For example, for the dataset in template file (`/Data/Template/template.xlsx`) or example file (`/Data/example.xlsx`):
+
+<p align="center">
+    <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/7e6217b3-2198-49e2-b624-fa7f002aba40">
+</p>
 ____________________________
 
 ## Before having fun...
@@ -93,3 +103,4 @@ pip install scipy
 
 ### References
 [^1]: Martinez-Rabert, E. (2023). *arXiv (preprint)*. doi: [10.48550/arXiv.2308.01062](https://doi.org/10.48550/arXiv.2308.01062)<br>
+[^2]: Kendall, M. G. (1938). *Biometrika*. doi: [10.1093/biomet/30.1-2.81](https://doi.org/10.1093/biomet/30.1-2.81)<br>
