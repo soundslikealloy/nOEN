@@ -61,4 +61,4 @@ pip install scipy
 **Eloi Martinez-Rabert**. :envelope: martinezrabe@wisc.edu or eloi.mrp@gmail.com
 
 ### References
-[^1]: Martinez-Rabert, E (2023). *arXiv (preprint)*. doi: [10.48550/arXiv.2308.01062](https://doi.org/10.48550/arXiv.2308.01062)<br>
+[^1]: Martinez-Rabert, E. (2023). *arXiv (preprint)*. doi: [10.48550/arXiv.2308.01062](https://doi.org/10.48550/arXiv.2308.01062)<br>
