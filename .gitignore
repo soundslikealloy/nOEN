@@ -3,3 +3,4 @@
 testing_nOEN.m
 Results
 Data/*.xlsx
+!Data/example.xlsx

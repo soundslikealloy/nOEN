@@ -16,3 +16,7 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/soundslikealloy/nOEN-py"
 "Bug Tracker" = "https://github.com/soundslikealloy/nOEN-py/issues"
+
+[build_system]
+requires = ["setuptools","wheel","numpy"]
+build-backend = "setuptools.build_meta" 

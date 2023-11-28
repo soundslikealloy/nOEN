@@ -7,7 +7,13 @@
 # doctest: +SKIP
 
 """
-Lorem ipsum...
+This module contain functions for plotting the outcomes from nOEN analysis.
+
+- :func:`squarePlot` for ...
+
+- :func:`concentricPlot` for ...
+
+- :func:`getNetwork` for ...
 
 """
 
