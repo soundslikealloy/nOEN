@@ -3,7 +3,7 @@
 ![Logo](Logo/Banner.png)
 <br>*Contributors: Eloi Martinez-Rabert*
 
-n-Order Ecological Network (nOEN) is a statistical platform to identify the ecological interactions (pairwise and higher-order) that control the community assembly. This platform is based on the multivariate Kendall's Tau (Tau-N), a new non-parametric correlation measure between more than two variables based on _paired orthants_[^1]. 
+n-Order Ecological Network (nOEN) is a statistical platform to identify the ecological interactions (pairwise and higher-order) that control the community assembly. This platform is based on the multivariate Kendall's Tau (Tau-N), a new non-parametric correlation measure between more than two variables based on the _paired orthants_ concept[^1]. 
 
 The multivariate Kendall's Tau (τ<sub>N</sub>) ranges from -1 to +1, inclusive. For **pairwise interactions** (corresponding to conventional Kendall's Tau, τ)[^2], a value of -1 indicates that one dataset ranking is the reverse of the other (i.e., negative correlation), whereas a value of +1 indicates that the two rankings of datasets are the same (i.e., positive correlation). A value of 0 indicates no correlation between datasets. The ecological interpretation of Kendall's Tau (τ coefficient) depends on the type of ecological interaction:
 
