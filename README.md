@@ -58,11 +58,13 @@ pip install scipy
    ```
    python nOENcmd.py -filename FILENAME
    ```
-   Where `FILENAME` is the name of Excel (from `/Data` folder) you want analyze (without extension '.xlsx'). Results from **nOEN** are saved in .npy (as `FILENAME.npy`) and/or .xlsx (as `FILENAME_results.xlsx`) format in the `/Results` folder.
+   Where `FILENAME` is the name of Excel (from `/Data` folder) you want analyze (without extension '.xlsx'). 
    For example:
    ```
-   python nOENcmd.py -filename template
+   python nOENcmd.py -filename example
    ```
+   Results from **nOEN** are saved in .npy (as `FILENAME.npy`) and/or .xlsx (as `FILENAME_results.xlsx`) format in the `/Results` folder.
+   
    **Optional arguments:**
    <table border="0">
        <tr><td>-h, --help</b></td><td>Show help message and optional arguments.</b></td></tr>
