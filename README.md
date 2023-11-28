@@ -54,7 +54,33 @@ pip install scipy
 4. Go to the **Code folder<sup>2</sup>** using `cd` command (more info about [Using Terminal](https://docs.anaconda.com/ae-notebooks/user-guide/basic-tasks/apps/use-terminal/?highlight=Using%20Terminal)).
     &#09;<br><sup><sup>2</sup>Code folder: folder with `nOENcmd.py` file (Folder: `/src/nOEN`). </sup>
 5. _Lorem ipsum..._
-6. _Lorem ipsum..._
+6. Execute **nOEN** with the command line:
+   ```
+   python nOENcmd.py -filename FILENAME
+   ```
+   Where `FILENAME` is the name of Excel (from `/Data` folder) you want analyze (without extension '.xlsx').
+   For example:
+   ```
+   python nOENcmd.py -filename template
+   ```
+   **Optional arguments:**
+   <table border="0">
+       <tr><td>-h, --help</b></td><td>Show help message and optional arguments.</b></td></tr>
+       <tr><td>-dim</td><td>Dimensions we want to test. Numbers separated by spaces without parentesis or brakets.</td></tr>
+       <tr><td>-infoinocula</td><td>Information of inocula (or time 0) provided.</td></tr>
+       <tr><td>-noExcel</td><td>Only save nOEN results in '.npy' format.</td></tr>
+       <tr><td>-onlyExcel</td><td> Create Excel file with existing nOEN results (saved in '.npy' format).</td></tr>
+   </table>
+
+   ```
+   python nOENcmd.py -h
+   python nOENcmd.py -filename template -dim 2 4 5
+   python nOENcmd.py -filename template -infoinocula
+   python nOENcmd.py -filename template -infoinocula -dim 2 4 5
+   python nOENcmd.py -filename template -dim 2 4 5 -noExcel
+   python nOENcmd.py -filename template -noExcel
+   python nOENcmd.py -filename template -dim 2 4 5 -onlyExcel
+   ```
 
 ## Contact
 
