@@ -21,6 +21,7 @@ import os.path
 import pandas as pd
 import numpy as np
 from itertools import combinations as _comb
+from itertools import compress
 
 def createDict(mainKeyName, iDict, info):
     """
@@ -125,7 +126,7 @@ def loadResults(fileName):
     return readResults
 
 
-def writeResults(fileName, Dim = 0):
+def writeResults(fileName, Dim = 0, varSelect = 0):
     """
     - :input:`fileName` (str). Name of file with data and info.
     - :input:`Dim` (list). List with dimensions we want to write (default: 0 -> 'All').
@@ -149,6 +150,12 @@ def writeResults(fileName, Dim = 0):
             varNames = rDict['data']['varNames']
             nd = data.shape[0]
             df = pd.DataFrame(data, columns = varNames.tolist(), index = np.arange(1, nd+1))
+            if not varSelect == 0:
+                # Check if variable name(s) exists
+                cvarNames = np.isin(varSelect, varNames)
+                getnotNames = list(compress(varSelect, ~cvarNames))
+                if getnotNames:
+                    print(' > Variable(s) `' + ' '.join(getnotNames) + '` not found.')
             with pd.ExcelWriter(fullPathSave) as writer:
                 df.to_excel(writer, sheet_name='Data')
                 if Dim == 0:
@@ -157,10 +164,16 @@ def writeResults(fileName, Dim = 0):
                     vD = Dim
                 for d in vD:
                     sName = 'D' + str(d)
-                    infoR = pd.DataFrame(np.array(['· Dimension ' + str(d), '· Reliable point: ' + str(2/(2**d)), '· Number of observations: ' + str(nd), '· Number of var combinations: ' + str(numComb[d-2])]))
+                    infoR = pd.DataFrame(np.array(['· Dimension ' + str(d), '· Reliable point: ' + str(2/(2**d)), '· Number of observations: ' + str(nd), '· Total number of var combinations: ' + str(numComb[d-2])]))
                     infoR.to_excel(writer, sheet_name = sName, index = False, header = False)
                     headR = ['[ ' + '± ' * d + ']', '[ ' + '∓ ' * d + ']', 'δ coefficients', '𝜏 coefficients', 'p-values']
                     for c in rDict['comb'][sName]:
+                        if not varSelect == 0:
+                            # Check if variable(s) is present in combination `c`
+                            ind = np.array(np.where(np.isin(varNames, varSelect)), dtype = int) + 1
+                            checkVar = any(np.isin(c, ind))
+                            if checkVar == False:
+                                continue
                         sRow = writer.sheets[sName].max_row
                         jvarName = "_".join(varNames[c - 1])
                         dvarName = pd.DataFrame([jvarName])
