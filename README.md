@@ -88,12 +88,14 @@ pip install scipy
 
    ```
    python nOENcmd.py -h
+   python nOENcmd.py -filename template -varNames S3 S5
    python nOENcmd.py -filename template -dim 2 4 5
    python nOENcmd.py -filename template -infoinocula
    python nOENcmd.py -filename template -infoinocula -dim 2 4 5
    python nOENcmd.py -filename template -dim 2 4 5 -noExcel
    python nOENcmd.py -filename template -noExcel
    python nOENcmd.py -filename template -dim 2 4 5 -onlyExcel
+   python nOENcmd.py -filename template -dim 2 4 5 -onlyExcel -varNames S3 S5
    ```
 
 ## Results Visualization
