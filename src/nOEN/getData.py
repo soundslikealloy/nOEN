@@ -15,6 +15,8 @@ This module contain functions to get data for various purposes.
 
 - :func:`loadResults` for getting the nOEN outcomes of the data set already analysed and plot them.
 
+- :func:`writeResults` for writing results in Excel file.
+
 """
 
 import os.path
