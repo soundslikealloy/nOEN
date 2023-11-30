@@ -56,15 +56,17 @@ print(' > InfoInocula: ' + str(infoInocula))
 print(' > CreateExcelWithResults: ' + str(Excel))
 print(' > OnlyExcel (read previous results): ' + str(onlyExcel))
 print(' > varWrite: ' + str(varSelect))
+print('')
 #----------
 
-# Read data from Excel and create nested dictionary
-loadDict = loadData(fileName)
-# Run nOEN
 if not onlyExcel:
+    # Read data from Excel and create nested dictionary
+    loadDict = loadData(fileName)
+    # Run nOEN
     leDict = nOEN(loadDict, dim, infoInocula)
     # Save results in .pyn
     createDict('saveDict', leDict, fileName)
 # Create Excel file with results
 if Excel:
     writeResults(fileName, dim, varSelect)
+    
