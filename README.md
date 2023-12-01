@@ -84,10 +84,12 @@ pip install scipy
        <tr><td>-noExcel</td><td>Save nOEN results only in '.npy' format.</td></tr>
        <tr><td>-onlyExcel</td><td> Create Excel file with existing nOEN results (saved in '.npy' format).</td></tr>
        <tr><td>-varSelect</td><td> Variables we want to write and/or plot. Name of variables separated by spaces without parenthesis or brakets.</td></tr>
+       <tr><td>-onlysig</td><td> Only significant results (p < 0.05) are written and/or plotted.</td></tr>
    </table>
 
    ```
    python nOENcmd.py -h
+   python nOENcmd.py -filename template -onlysig
    python nOENcmd.py -filename template -varSelect S3 S5
    python nOENcmd.py -filename template -dim 2 4 5
    python nOENcmd.py -filename template -infoinocula
@@ -96,6 +98,7 @@ pip install scipy
    python nOENcmd.py -filename template -noExcel
    python nOENcmd.py -filename template -dim 2 4 5 -onlyExcel
    python nOENcmd.py -filename template -dim 2 4 5 -onlyExcel -varSelect S3 S5
+   python nOENcmd.py -filename template -dim 2 4 5 -onlyExcel -varSelect S3 S5 -onlysig
    ```
 
 ## Results Visualization
