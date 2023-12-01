@@ -53,14 +53,14 @@ onlySig = args.onlySig
 # plotType = args.plotType
 
 #-DEBUGGING (argparse)
-print('>> Arguments')
-print(' > Dims: ' + str(dim))
-print(' > InfoInocula: ' + str(infoInocula))
-print(' > CreateExcelWithResults: ' + str(Excel))
-print(' > OnlyExcel (read previous results): ' + str(onlyExcel))
-print(' > varWrite: ' + str(varSelect))
-print(' > OnlySignifiative: ' + str(onlySig))
-print('')
+# print('>> Arguments')
+# print(' > Dims: ' + str(dim))
+# print(' > InfoInocula: ' + str(infoInocula))
+# print(' > CreateExcelWithResults: ' + str(Excel))
+# print(' > OnlyExcel (read previous results): ' + str(onlyExcel))
+# print(' > varWrite: ' + str(varSelect))
+# print(' > OnlySignifiative: ' + str(onlySig))
+# print('')
 #----------
 
 if not onlyExcel:
