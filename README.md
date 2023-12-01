@@ -59,7 +59,7 @@ pip install pandas
 pip install scipy
 ```
 ## :clipboard: Instructions to run nOEN using Command Line Interface (CLI)
-1. Download .zip code. Last version: `v0.1`. [Download package](https://github.com/soundslikealloy/nOEN-py/archive/refs/tags/v0.1.zip).
+1. Download .zip code. Last version: `v0.2`. [Download package](https://github.com/soundslikealloy/nOEN-py/archive/refs/tags/v0.2.zip).
 2. Extract files to a destination (:bulb: Recommendation - Desktop).
 3. Open **Anaconda Prompt or Terminal**.
 4. Go to the **Code folder<sup>2</sup>** using `cd` command (more info about [Using Terminal](https://docs.anaconda.com/ae-notebooks/user-guide/basic-tasks/apps/use-terminal/?highlight=Using%20Terminal)).
