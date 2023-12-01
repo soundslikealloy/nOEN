@@ -47,9 +47,9 @@ def createDict(mainKeyName, iDict, info):
     elif mainKeyName == 'saveDict':
         path = '../../Results/'
         fullPathSave = path + info + '.npy'
-        if os.path.isfile(fullPathSave) == True:
+        if os.path.isfile(fullPathSave):
             cDict = loadResults(info)
-            if cDict['data']['results'] == True:
+            if cDict['data']['results']:
                 val = input(' > Do you want to overwrite `' + info + '.npy`? [Y/N]: ')
                 if val == 'Y' or val == 'y':
                     np.save(fullPathSave, iDict)
@@ -74,7 +74,7 @@ def loadData(fileName):
     print('\n>> Loading data...')
     path = '../../Results/'
     fullPathFile = path + fileName + '.npy'
-    if os.path.isfile(fullPathFile) == True:
+    if os.path.isfile(fullPathFile):
         print(' > File `' + fileName + '.npy` with results.')
         rDict = loadResults(fileName)
     else:
@@ -128,7 +128,7 @@ def loadResults(fileName):
     return readResults
 
 
-def writeResults(fileName, Dim = 0, varSelect = 0):
+def writeResults(fileName, Dim = 0, varSelect = 0, onlySig = False):
     """
     - :input:`fileName` (str). Name of file with data and info.
     - :input:`Dim` (list). List with dimensions we want to write (default: 0 -> 'All').
@@ -137,8 +137,8 @@ def writeResults(fileName, Dim = 0, varSelect = 0):
     path = '../../Results/'
     fullPathFile = path + fileName + '.npy'
     fullPathSave = path + fileName + '_results.xlsx'
-    if os.path.isfile(fullPathFile) == True:
-        if os.path.isfile(fullPathSave) == True:
+    if os.path.isfile(fullPathFile):
+        if os.path.isfile(fullPathSave):
             val = input(' > Do you want to overwrite `' + fileName + '_results.xlsx`? [Y/N]: ')
         else:
             val = 'Y'
@@ -166,7 +166,7 @@ def writeResults(fileName, Dim = 0, varSelect = 0):
                     vD = Dim
                 for d in vD:
                     sName = 'D' + str(d)
-                    infoR = pd.DataFrame(np.array(['· Dimension ' + str(d), '· Reliable point: ' + str(2/(2**d)), '· Number of observations: ' + str(nd), '· Total number of var combinations: ' + str(numComb[d-2])]))
+                    infoR = pd.DataFrame(np.array(['· Dimension ' + str(d), '· Reliable point: ' + str(2/(2**d)), '· Total number of observations: ' + str(nd), '· Total number of var combinations: ' + str(numComb[d-2])]))
                     infoR.to_excel(writer, sheet_name = sName, index = False, header = False)
                     headR = ['[ ' + '± ' * d + ']', '[ ' + '∓ ' * d + ']', 'δ coefficients', '𝜏 coefficients', 'p-values']
                     for c in rDict['comb'][sName]:
@@ -174,20 +174,29 @@ def writeResults(fileName, Dim = 0, varSelect = 0):
                             # Check if variable(s) is present in combination `c`
                             ind = np.array(np.where(np.isin(varNames, varSelect)), dtype = int) + 1
                             checkVar = any(np.isin(c, ind))
-                            if checkVar == False:
+                            if not checkVar:
                                 continue
                         sRow = writer.sheets[sName].max_row
                         jvarName = "_".join(varNames[c - 1])
-                        dvarName = pd.DataFrame([jvarName])
+                        ExcelName = jvarName.replace("_", " ")
+                        dvarName = pd.DataFrame(["[" + ExcelName + "]"])
                         dvarName.to_excel(writer, sheet_name = sName, startrow = sRow+1, index = False, header = False)
                         r = rDict['coeff'][sName][jvarName]['coeffInfo']
+                        numObsComb = pd.DataFrame(['Number of observations: ' + str(rDict['coeff'][sName][jvarName]['numObs'])])
+                        numObsComb.to_excel(writer, sheet_name = sName, startrow = sRow+2, index = False, header = False)
+                        if onlySig:
+                            checkSig = np.any(r['RKt_pval'] < 0.051)
+                            if not checkSig:
+                                noSigMSN = pd.DataFrame(['No significant data trends were found.'])
+                                noSigMSN.to_excel(writer, sheet_name = sName, startrow = sRow+3, index = False, header = False)
+                                continue
                         if d == 2:
                             rM = [r['signs1'][0], r['signs2'][0], '-', r['RKtau'], r['RKt_pval']]
                             R = pd.DataFrame([rM], columns = headR)
                         else:
                             rM = np.array([r['signs1'], r['signs2'], r['deltas'], r['RKtau'], r['RKt_pval']]).T
                             R = pd.DataFrame(rM, columns = headR)
-                        R.to_excel(writer, sheet_name = sName, startrow = sRow+2, index = False)
+                        R.to_excel(writer, sheet_name = sName, startrow = sRow+3, index = False)
             print('>> Writing done.')
         else:
             print(' > Results not written. If you don\'t want to lose existing results files, change the name of existing Excel or make a copy into another folder before.')
