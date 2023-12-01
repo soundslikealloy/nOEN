@@ -26,13 +26,13 @@ parser.add_argument('-dim', dest = 'dim', default = 0, nargs = '+', type = int, 
 parser.add_argument('-infoinocula', dest = 'infoInocula', default = False, action = 'store_true',
                     help = '[bool] Information of inocula (or time 0) provided (Default: False).')
 parser.add_argument('-noExcel', dest = 'noExcel', default = True, action = 'store_false',
-                    help = '[bool] Only save nOEN results in .npy format (default: True).')
+                    help = '[bool] Only save nOEN results in .npy format (Default: True).')
 parser.add_argument('-onlyExcel', dest = 'onlyExcel', default = False, action = 'store_true',
                     help = '[bool] Create Excel file with existing nOEN results (Default: False).')
 parser.add_argument('-varSelect', dest = 'varSelect', default = 0, nargs = '+', action = 'store',
                     help = '[list] Variables we want to write and/or plot. Name of variables separated by spaces without parenthesis or brakets (Default: 0 -> \'All\'; CASE-SENSITIVE).')
 parser.add_argument('-onlysig', dest = 'onlySig', default = False, action = 'store_true',
-                    help = '[bool] Only significant results (p < 0.05) are written and/or plotted. (Default: False).')
+                    help = '[bool] Only significant results (p < 0.05) are written and/or plotted (Default: False).')
 # parser.add_argument('-nofigure', dest = 'noFigure', default = True, action = 'store_true',
 #                     help = '[bool] No plotting, only outcomes from nOEN are saved.')
 # parser.add_argument('-onlyfigure', dest = 'figureOnly', default = True, action = 'store_true',
