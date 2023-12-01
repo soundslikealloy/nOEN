@@ -44,7 +44,7 @@ args = parser.parse_args()
 fileName = args.fileName
 dim = args.dim
 infoInocula = args.infoInocula
-Excel = args.noExcel
+excel = args.noExcel
 onlyExcel = args.onlyExcel
 varSelect = args.varSelect
 onlySig = args.onlySig
@@ -56,7 +56,7 @@ onlySig = args.onlySig
 # print('>> Arguments')
 # print(' > Dims: ' + str(dim))
 # print(' > InfoInocula: ' + str(infoInocula))
-# print(' > CreateExcelWithResults: ' + str(Excel))
+# print(' > CreateExcelWithResults: ' + str(excel))
 # print(' > OnlyExcel (read previous results): ' + str(onlyExcel))
 # print(' > varWrite: ' + str(varSelect))
 # print(' > OnlySignifiative: ' + str(onlySig))
@@ -71,6 +71,6 @@ if not onlyExcel:
     # Save results in .pyn
     createDict('saveDict', leDict, fileName)
 # Create Excel file with results
-if Excel:
+if excel:
     writeResults(fileName, dim, varSelect, onlySig)
     
