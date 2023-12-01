@@ -79,7 +79,10 @@ def multivarcorr(D, dataset, numObs):
     paired_Oh = np.stack([pOh1, pOh2])
     # Delta coefficients
     F, symbolMatrix_up, symbolMatrix_down, binomial_untied = formalism_Oh(N, numObs, dataset, paired_Oh, binomial)
-    deltas = (1 / binomial_untied) * F
+    if binomial_untied == 0:
+        deltas = (1 / binomial) * F
+    else:
+        deltas = (1 / binomial_untied) * F
     # p-value (deltas)
     var = (2 * (2 * numObs + 5)) / (9 * numObs * (numObs - 1))
     d_Zt = deltas / math.sqrt(var)
