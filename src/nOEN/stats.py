@@ -17,6 +17,8 @@ This module contain functions to perform multivariate rank correlation coefficie
 
 """
 
+import sys
+
 import numpy as np
 import math
 from scipy.stats import norm, gmean
@@ -132,6 +134,9 @@ def nOEN(dDict, Dim = 0, infoInocula = False):
             if infoInocula:
                 # Select those observations with all variables in inocula
                 dataInocula = dDict['data']['inocula'][:, iCombi]
+                if dataInocula.size == 0:
+                    print('Error 404: Inocula or time-zero data not found.')
+                    sys.exit()
                 data = data[np.all(dataInocula, axis = 1), :]
             numObs = data.shape[0]
             if numObs < 2:
