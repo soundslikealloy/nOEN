@@ -3,18 +3,18 @@
 ![Logo](Logo/Banner.png)
 <br>*Contributors: Eloi Martinez-Rabert*
 
-n-Order Ecological Network (nOEN) is a statistical platform to identify the ecological interactions (pairwise and higher-order) that control the community assembly. This platform is based on the multivariate Kendall's Tau (Tau-N), a new non-parametric correlation measure between more than two variables based on the _paired orthants_ concept[^1]. 
+n-Order Ecological Network (nOEN) is a statistical platform to identify the ecological interactions (pairwise and higher-order) that control the community assembly. This platform is based on the iota coefficient (ι<sub>N</sub>), a new non-parametric association measure between more than two variables based on the _paired orthants_ concept[^1]. 
 
-The multivariate Kendall's Tau (τ<sub>N</sub>) ranges from -1 to +1, inclusive. For **pairwise interactions** (corresponding to conventional Kendall's Tau, τ)[^2], a value of -1 indicates that one dataset ranking is the reverse of the other (i.e., negative correlation), whereas a value of +1 indicates that the two rankings of datasets are the same (i.e., positive correlation). A value of 0 indicates no correlation between datasets. The ecological interpretation of Kendall's Tau (τ coefficient) depends on the type of ecological interaction:
+For **pairwise interactions** (2 joint variables), ι<sub>2</sub> corresponds to conventional Kendall's Tau, τ[^2]. Kendall's τ (and ι<sub>2</sub>) ranges from -1 to +1. A value of -1 indicates that one dataset ranking is the reverse of the other (i.e., negative correlation), whereas a value of +1 indicates that the two rankings of datasets are the same (i.e., positive correlation). A value of 0 indicates no correlation between datasets. The ecological interpretation of Kendall's τ depends on the type of ecological interaction:
 
 <p align="center">
     <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/8a9bf5dd-1a5f-485f-93ac-25cd32cc973f">
 </p>
 
-For **higher-order interactions** (τ<sub>N</sub> coefficients), a value of +1 indicates that the _N_ ranking of datasets follows the particular tendency (represented with +/↑ and -/↓), whereas a value of -1 indicatest that the _N_ ranking of datasets follows another tendency entirely. A value of 0 indicates no correlaion among datasets. A unique τ<sub>N</sub> coefficient is associated to a specific data trend. For example, for the dataset in template file (`/Data/Template/template.xlsx`) and example file (`/Data/example.xlsx`):
+For **higher-order interactions** (>2 joint variables), ι<sub>N>2</sub> also ranges from -1 to +1. A value of +1 indicates that the _N_ ranking of datasets follows the particular tendency (represented with +/↑ and -/↓), whereas a value of -1 indicatest that the _N_ ranking of datasets follows another tendency entirely. A value of 0 indicates no correlation among datasets. A unique ι<sub>N</sub> coefficient is associated to a specific data trend, that is, a higher-order interaction. For example, for the dataset in template file (`/Data/Template/template.xlsx`) and example file (`/Data/example.xlsx`):
 
 <p align="center">
-    <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/7e6217b3-2198-49e2-b624-fa7f002aba40">
+    <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/bfda81a3-9329-482f-8394-ab95e55e1816">
 </p>
 
 ____________________________
