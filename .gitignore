@@ -1,6 +1,7 @@
 *.asv
 ~$*
 testing_nOEN.m
-Results
+Results/*
+!Results/*.md
 Data/*.xlsx
 !Data/example.xlsx
