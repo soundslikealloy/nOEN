@@ -2,5 +2,6 @@
 ~$*
 testing_nOEN.m
 Results
+!Results\*.txt
 Data/*.xlsx
 !Data/example.xlsx
