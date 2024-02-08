@@ -91,19 +91,19 @@ def multivarcorr(D, dataset, numObs):
     d_pval = 2 * norm.cdf(-abs(d_Zt))
     # Rabert-Kendall's Tau
     if D == 2:
-        RKtau = deltas[0] - deltas[1]
+        iota = deltas[0] - deltas[1]
     else:
-        RKtau_comb = np.empty([0, 2], dtype=int)
+        iota_comb = np.empty([0, 2], dtype=int)
         for t in np.array(list(product(np.arange(0, N, dtype=int), repeat=2))):
             if not np.all(t == t[0]):
-                RKtau_comb = np.append(RKtau_comb, [t], axis=0)     # Combinations of paired orthants
-        d_diff = (1 + (deltas[RKtau_comb[:, 0]] - deltas[RKtau_comb[:, 1]]))
+                iota_comb = np.append(iota_comb, [t], axis=0)     # Combinations of paired orthants
+        d_diff = (1 + (deltas[iota_comb[:, 0]] - deltas[iota_comb[:, 1]]))
         deltas_diff = d_diff.reshape(N-1, N, order='F').copy()
-        RKtau = (gmean(deltas_diff)-1).transpose()
-    RK_Zt = RKtau / math.sqrt(var)
-    RKt_pval = 2 * norm.cdf(-abs(RK_Zt))
+        iota = (gmean(deltas_diff)-1).transpose()
+    iota_Zt = iota / math.sqrt(var)
+    iota_pval = 2 * norm.cdf(-abs(iota_Zt))
 
-    return (RKtau, RKt_pval, deltas, d_pval, symbolMatrix_up, symbolMatrix_down)
+    return (iota, iota_pval, deltas, d_pval, symbolMatrix_up, symbolMatrix_down)
 
 
 def nOEN(dDict, Dim = 0, infoInocula = False):
@@ -142,14 +142,14 @@ def nOEN(dDict, Dim = 0, infoInocula = False):
             if numObs < 2:
                 print('!UserWarning: Not enough number of observations in ' + iVar +' dataset (D=' + str(d) +')')
             else:
-                RKtau, RKt_pval, deltas, d_pval, symbolMatrix_up, symbolMatrix_down = multivarcorr(d, data, numObs)
+                iota, iota_pval, deltas, d_pval, symbolMatrix_up, symbolMatrix_down = multivarcorr(d, data, numObs)
                 dDict['coeff'][D_field][nameK3_comb]['numObs'] = numObs
                 dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['signs1'] = symbolMatrix_up
                 dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['signs2'] = symbolMatrix_down
                 dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['deltas'] = np.around(deltas, decimals = 4)
                 dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['d_pval'] = np.around(d_pval, decimals = 6)
-                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['RKtau'] = np.around(RKtau, decimals = 4)
-                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['RKt_pval'] = np.around(RKt_pval, decimals = 6)
+                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['iota'] = np.around(iota, decimals = 4)
+                dDict['coeff'][D_field][nameK3_comb]['coeffInfo']['iota_pval'] = np.around(iota_pval, decimals = 6)
                 dDict['data']['results'] = True
     print('>> nOEN done.')
     
