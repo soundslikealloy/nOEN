@@ -85,7 +85,7 @@ def loadData(fileName):
         # Initialization 
         leDict = {}             # Full dictionary (`data` + `comb` + `coeff`)
         combDict = {}           # Dictionary of combinations (`comb`)
-        coeffDict = {}          # Dictionary of Tau-N coefficients (`coeff`)
+        coeffDict = {}          # Dictionary of Iota coefficients (`coeff`)
         # Structure dataset (data)
         di = pd.read_excel(fullPath, sheet_name = 't_0')
         df = pd.read_excel(fullPath, sheet_name = 't_max')
@@ -94,7 +94,7 @@ def loadData(fileName):
         df = np.array(df)
         numVar = len(varNames)
         leDict = createDict('data', leDict, {'inocula': di, 'final': df, 'varNames': varNames, 'numVar': numVar, 'results': False})
-        # Structures combinations & Tau-N coefficients (`comb`, `coeff`)
+        # Structures combinations & Iota coefficients (`comb`, `coeff`)
         v = np.arange(1, numVar+1)
         nCoef = []
         for i in range(2, numVar+1):
@@ -109,7 +109,7 @@ def loadData(fileName):
             coeffDict[nameK2] = {}
             for i_c in c:
                 nameK3_comb = "_".join(varNames[i_c - 1])
-                coeffDict[nameK2][nameK3_comb] = {'iD': i_c, 'D': i, 'reliablePoint': relP, 'numObs': [], 'coeffInfo': {'signs1': [], 'signs2': [], 'deltas': [], 'd_pval': [], 'RKtau': [], 'RKt_pval': []}}
+                coeffDict[nameK2][nameK3_comb] = {'iD': i_c, 'D': i, 'reliablePoint': relP, 'numObs': [], 'coeffInfo': {'signs1': [], 'signs2': [], 'deltas': [], 'd_pval': [], 'iota': [], 'iota_pval': []}}
         combDict['numcoeff'] = nCoef
         leDict = createDict('comb', leDict, combDict)
         leDict = createDict('coeff', leDict, coeffDict)
@@ -168,7 +168,7 @@ def writeResults(fileName, Dim = 0, varSelect = 0, onlySig = False):
                     sName = 'D' + str(d)
                     infoR = pd.DataFrame(np.array(['· Dimension ' + str(d), '· Reliable point: ' + str(2/(2**d)), '· Total number of observations: ' + str(nd), '· Total number of var combinations: ' + str(numComb[d-2])]))
                     infoR.to_excel(writer, sheet_name = sName, index = False, header = False)
-                    headR = ['[ ' + '± ' * d + ']', '[ ' + '∓ ' * d + ']', 'δ coefficients', '𝜏 coefficients', 'p-values']
+                    headR = ['[ ' + '± ' * d + ']', '[ ' + '∓ ' * d + ']', 'δ coefficients', 'ι coefficients', 'p-values']
                     for c in rDict['comb'][sName]:
                         if not varSelect == 0:
                             # Check if variable(s) is present in combination `c`
@@ -185,16 +185,16 @@ def writeResults(fileName, Dim = 0, varSelect = 0, onlySig = False):
                         numObsComb = pd.DataFrame(['Number of observations: ' + str(rDict['coeff'][sName][jvarName]['numObs'])])
                         numObsComb.to_excel(writer, sheet_name = sName, startrow = sRow+2, index = False, header = False)
                         if onlySig:
-                            checkSig = np.any(r['RKt_pval'] < 0.051)
+                            checkSig = np.any(r['iota_pval'] < 0.051)
                             if not checkSig:
                                 noSigMSN = pd.DataFrame(['No significant data trends were found.'])
                                 noSigMSN.to_excel(writer, sheet_name = sName, startrow = sRow+3, index = False, header = False)
                                 continue
                         if d == 2:
-                            rM = [r['signs1'][0], r['signs2'][0], '-', r['RKtau'], r['RKt_pval']]
+                            rM = [r['signs1'][0], r['signs2'][0], '-', r['iota'], r['iota_pval']]
                             R = pd.DataFrame([rM], columns = headR)
                         else:
-                            rM = np.array([r['signs1'], r['signs2'], r['deltas'], r['RKtau'], r['RKt_pval']]).T
+                            rM = np.array([r['signs1'], r['signs2'], r['deltas'], r['iota'], r['iota_pval']]).T
                             R = pd.DataFrame(rM, columns = headR)
                         R.to_excel(writer, sheet_name = sName, startrow = sRow+3, index = False)
             print('>> Writing done.')
