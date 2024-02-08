@@ -11,7 +11,7 @@ For **pairwise interactions** (2 joint variables), ι<sub>2</sub> corresponds to
     <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/8a9bf5dd-1a5f-485f-93ac-25cd32cc973f">
 </p>
 
-For **higher-order interactions** (>2 joint variables), ι<sub>(N>2)</sub> also ranges from -1 to +1. A value of +1 indicates that the _N_ ranking of datasets follows the particular tendency (represented with +/↑ and -/↓), whereas a value of -1 indicatest that the _N_ ranking of datasets follows another tendency entirely. A value of 0 indicates no correlation among datasets. A unique ι<sub>N</sub> coefficient is associated to a specific data trend, that is, a higher-order interaction. For example, for the dataset in template file (`/Data/Template/template.xlsx`) and example file (`/Data/example.xlsx`):
+For **higher-order interactions** (>2 joint variables), ι<sub>N>2</sub> also ranges from -1 to +1. A value of +1 indicates that the _N_ ranking of datasets follows the particular tendency (represented with +/↑ and -/↓), whereas a value of -1 indicatest that the _N_ ranking of datasets follows another tendency entirely. A value of 0 indicates no correlation among datasets. A unique ι<sub>N</sub> coefficient is associated to a specific data trend, that is, a higher-order interaction. For example, for the dataset in template file (`/Data/Template/template.xlsx`) and example file (`/Data/example.xlsx`):
 
 <p align="center">
     <img src="https://github.com/soundslikealloy/nOEN-py/assets/81569132/bfda81a3-9329-482f-8394-ab95e55e1816">
