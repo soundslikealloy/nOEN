@@ -168,7 +168,7 @@ def writeResults(fileName, Dim = 0, varSelect = 0, onlySig = False):
                     sName = 'D' + str(d)
                     infoR = pd.DataFrame(np.array(['· Dimension ' + str(d), '· Reliable point: ' + str(2/(2**d)), '· Total number of observations: ' + str(nd), '· Total number of var combinations: ' + str(numComb[d-2])]))
                     infoR.to_excel(writer, sheet_name = sName, index = False, header = False)
-                    headR = ['[ ' + '± ' * d + ']', '[ ' + '∓ ' * d + ']', 'δ coefficients', 'ι coefficients', 'p-values']
+                    headR = ['[ ' + '± ' * d + ']', '[ ' + '∓ ' * d + ']', 'δ coeff.', 'ι coeff.', 'p-values']
                     for c in rDict['comb'][sName]:
                         if not varSelect == 0:
                             # Check if variable(s) is present in combination `c`
