@@ -80,7 +80,7 @@ def multivarcorr(D, dataset, numObs):
     pOh1 = sC[0:N, :]
     pOh2 = np.flipud(sC[-N:])
     paired_Oh = np.stack([pOh1, pOh2])
-    # Delta coefficients
+    # Delta coefficients (Direct computation)
     F, symbolMatrix_up, symbolMatrix_down, binomial_untied = formalism_Oh(N, numObs, dataset, paired_Oh, binomial)
     if binomial_untied == 0:
         deltas = (1 / binomial) * F
