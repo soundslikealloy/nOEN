@@ -6,3 +6,4 @@ Results/*
 Data/*.xlsx
 !Data/example.xlsx
 *.pyc
+test.py
