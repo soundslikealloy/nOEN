@@ -39,6 +39,7 @@ A **Python package** is a collection of files containing Python code (i.e., modu
 - **Numpy.** NumPy is the fundamental package for scientific computing in Python. It is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more. For more info and tutorials, click [here](https://numpy.org/).
 - **Pandas**. Pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language. For more info and tutorials, click [here](https://pandas.pydata.org/).
 - **SciPy**. SciPy is an open-source software for mathematics, science, and engineering. This package provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other. For more info and tutorials, click [here](https://scipy.org/).
+- **Openpyxl**. Openpyxl is a python library to read/write Excel files. For more info and tutorials, click [here](https://openpyxl.readthedocs.io/en/stable/).
 
 ### Installation of packages using Anaconda Navigator
 You can install any Python package using the **Anaconda Navigator**. For this, execute the navigator and click to **Environments**. In this section you can install new packages and delete the already installed. For more info, click [here](https://docs.anaconda.com/free/navigator/).
@@ -58,6 +59,11 @@ pip install pandas
 ```
 pip install scipy
 ```
+**Openpyxl**:
+```
+pip install openpyxl
+```
+
 ## :clipboard: Instructions to run nOEN using Command Line Interface (CLI)
 1. Download .zip code. Last version: `v0.3`. [Download package](https://github.com/soundslikealloy/nOEN-py/archive/refs/tags/v0.3.zip).
 2. Extract files to a destination (:bulb: Recommendation - Desktop).
