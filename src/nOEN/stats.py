@@ -30,6 +30,7 @@ def formalism_Oh(N, numObs, dataset, paired_Oh, binomial):
     """
     - :input:`N` (int). Number of paired orthants and delta coefficients.
     - :input:`numObs` (int). Number of observations.
+    - :input:`dataset` (np.array).
     - :input:`paired_Oh` (np.array). Signs of each paired orthant.
     - :input:`binomial` (int). Binomial coefficient.
 
@@ -79,7 +80,7 @@ def multivarcorr(D, dataset, numObs):
     pOh1 = sC[0:N, :]
     pOh2 = np.flipud(sC[-N:])
     paired_Oh = np.stack([pOh1, pOh2])
-    # Delta coefficients
+    # Delta coefficients (Direct computation)
     F, symbolMatrix_up, symbolMatrix_down, binomial_untied = formalism_Oh(N, numObs, dataset, paired_Oh, binomial)
     if binomial_untied == 0:
         deltas = (1 / binomial) * F
@@ -89,7 +90,7 @@ def multivarcorr(D, dataset, numObs):
     var = (2 * (2 * numObs + 5)) / (9 * numObs * (numObs - 1))
     d_Zt = deltas / math.sqrt(var)
     d_pval = 2 * norm.cdf(-abs(d_Zt))
-    # Rabert-Kendall's Tau
+    # Iota-N coefficient
     if D == 2:
         iota = deltas[0] - deltas[1]
     else:
