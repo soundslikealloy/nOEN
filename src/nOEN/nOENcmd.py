@@ -13,7 +13,7 @@ This module contain functions to run nOEN in Command Prompt.
 
 import argparse
 
-from getData import loadResults, loadData, createDict, writeResults
+# from getData import loadResults, loadData, createDict, writeResults
 from stats import nOEN
 
 # Command Line Interface (CLI)
