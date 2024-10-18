@@ -24,7 +24,7 @@ import math
 from scipy.stats import norm, gmean
 from itertools import product
 
-from getData import loadResults, createDict
+# from getData import loadResults, createDict
 
 def formalism_Oh(N, numObs, dataset, paired_Oh, binomial):
     """
