@@ -193,10 +193,14 @@ def writeResults(fileName, Dim = 0, varSelect = 0, onlySig = False):
                         if d == 2:
                             rM = [r['signs1'][0], r['signs2'][0], '-', r['iota'], r['iota_pval']]
                             R = pd.DataFrame([rM], columns = headR)
+                            R[headR[-2:]] = R[headR[-2:]].astype(float)
                         else:
-                            rM = np.array([r['signs1'], r['signs2'], r['deltas'], r['iota'], r['iota_pval']]).T
-                            R = pd.DataFrame(rM, columns = headR)
-                        R.to_excel(writer, sheet_name = sName, startrow = sRow+3, index = False)
+                            rMSings = np.array([r['signs1'], r['signs2']]).T
+                            rMcoeffs = np.array([r['deltas'], r['iota'], r['iota_pval']], dtype = 'float').T
+                            rM = np.append(rMSings, rMcoeffs, axis = 1)
+                            R = pd.DataFrame(rM, columns = headR).infer_objects()
+                            R[headR[-3:]] = R[headR[-3:]].astype(float)
+                        R.to_excel(writer, sheet_name = sName, float_format = '%.4f', startrow = sRow+3, index = False)
             print('>> Writing done.')
         else:
             print(' > Results not written. If you don\'t want to lose existing results files, change the name of existing Excel or make a copy into another folder before.')
