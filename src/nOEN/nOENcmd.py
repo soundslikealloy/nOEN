@@ -33,10 +33,10 @@ parser.add_argument('-varSelect', dest = 'varSelect', default = 0, nargs = '+', 
                     help = '[list] Variables we want to write and/or plot. Name of variables separated by spaces without parenthesis or brakets (Default: 0 -> \'All\'; CASE-SENSITIVE).')
 parser.add_argument('-onlysig', dest = 'onlySig', default = False, action = 'store_true',
                     help = '[bool] Only significant results (p < 0.05) are written and/or plotted (Default: False).')
-parser.add_argument('-noFigure', dest = 'noFigure', default = True, action = 'store_false',
-                    help = '[bool] No plotting, only outcomes from nOEN are saved.')
+parser.add_argument('-noFigures', dest = 'noFigure', default = True, action = 'store_false',
+                    help = '[bool] No plotting, only outcomes from nOEN are saved in Excel.')
 parser.add_argument('-onlyFigures', dest = 'figureOnly', default = False, action = 'store_true',
-                    help = '[bool] Only plotting of existing results.')
+                    help = '[bool] Only plotting results.')
 # parser.add_argument('-plottype', dest = 'plotType', default = 'All', action = 'store',
 #                     help = '[str] Select plotting style of nOEN outcomes ['squarePlot', 'concentricPlot', 'getNetwork'].')
 args = parser.parse_args()
@@ -76,4 +76,4 @@ if not onlyRead:
 if excel:
     writeResults(fileName, dim, varSelect, onlySig)
 if figure:
-    ecologicalGrid(fileName, leDict, varSelect, onlySig)
+    ecologicalGrid(fileName, leDict, dim, varSelect, onlySig)
