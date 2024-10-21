@@ -85,7 +85,7 @@ pip install openpyxl
    ```
    python nOENcmd.py -filename example
    ```
-   Results from **nOEN** are saved in .npy (as `FILENAME.npy`) and/or .xlsx (as `FILENAME_results.xlsx`) format in the `/Results` folder.
+   Results from **nOEN** are saved in .npy (as `FILENAME.npy`), .xlsx (as `FILENAME_results.xlsx`) format and/or plotted (see [Results Visualization](#results-visualization)) in the `/Results` folder.
    
    **Optional arguments:**
    <table border="0">
