@@ -96,7 +96,7 @@ pip install openpyxl
        <tr><td>-onlyExcel</td><td> Create Excel file with existing nOEN results (saved in '.npy' format).</td></tr>
        <tr><td>-varSelect</td><td> Variables we want to write and/or plot. Name of variables separated by spaces without parenthesis or brakets.</td></tr>
        <tr><td>-onlysig</td><td> Only significant results (p < 0.05) are written and/or plotted.</td></tr>
-       <tr><td>-noFigures</td><td> No plotting, outcomes from nOEN are only saved in Excel.</td></tr>
+       <tr><td>-noFigures</td><td> No plotting. Outcomes from nOEN are only saved in Excel.</td></tr>
        <tr><td>-onlyFigures</td><td> Outcomes from nOEN are only plotted, not saved in Excel.</td></tr>
    </table>
 
