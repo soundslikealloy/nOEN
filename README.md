@@ -38,6 +38,7 @@ Spyder is a Python development environment with many features for working with P
 A **Python package** is a collection of files containing Python code (i.e., modules). To execute **nOEN**, the following packages must to be installed:
 - **Numpy.** NumPy is the fundamental package for scientific computing in Python. It is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more. For more info and tutorials, click [here](https://numpy.org/).
 - **Pandas**. Pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language. For more info and tutorials, click [here](https://pandas.pydata.org/).
+- **Matplotlib**. Matplotlib is a library for creatinc static, animated and interactive visualizations in Python. For more info and tutorials, click [here](https://matplotlib.org/).
 - **SciPy**. SciPy is an open-source software for mathematics, science, and engineering. This package provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other. For more info and tutorials, click [here](https://scipy.org/).
 - **Openpyxl**. Openpyxl is a python library to read/write Excel files. For more info and tutorials, click [here](https://openpyxl.readthedocs.io/en/stable/).
 
@@ -54,6 +55,10 @@ pip install numpy
 **Pandas**:
 ```
 pip install pandas
+```
+**Matplotlib**:
+```
+pip install matplotlib
 ```
 **SciPy**:
 ```
@@ -84,18 +89,26 @@ pip install openpyxl
    
    **Optional arguments:**
    <table border="0">
-       <tr><td>-h, --help</b></td><td>Show help message and optional arguments.</b></td></tr>
-       <tr><td>-dim</td><td>Dimensions we want to test. Numbers separated by spaces without parenthesis or brakets.</td></tr>
-       <tr><td>-infoinocula</td><td>Information of inocula (or time 0) provided.</td></tr>
-       <tr><td>-noExcel</td><td>Save nOEN results only in '.npy' format.</td></tr>
+       <tr><td>-h, --help</b></td><td> Show help message and optional arguments.</b></td></tr>
+       <tr><td>-dim</td><td> Dimensions we want to test. Numbers separated by spaces without parenthesis or brakets.</td></tr>
+       <tr><td>-infoinocula</td><td> Information of inocula (or time 0) provided.</td></tr>
+       <tr><td>-noExcel</td><td> Save nOEN results only in '.npy' format.</td></tr>
        <tr><td>-onlyExcel</td><td> Create Excel file with existing nOEN results (saved in '.npy' format).</td></tr>
        <tr><td>-varSelect</td><td> Variables we want to write and/or plot. Name of variables separated by spaces without parenthesis or brakets.</td></tr>
        <tr><td>-onlysig</td><td> Only significant results (p < 0.05) are written and/or plotted.</td></tr>
+       <tr><td>-noFigures</td><td> No plotting, outcomes from nOEN are only saved in Excel.</td></tr>
+       <tr><td>-onlyFigures</td><td> Outcomes from nOEN are only plotted, not saved in Excel.</td></tr>
    </table>
 
    ```
    python nOENcmd.py -h
    python nOENcmd.py -filename template -onlysig
+   python nOENcmd.py -filename template -noFigures
+   python nOENcmd.py -filename template -onlyFigures
+   python nOENcmd.py -filename template -onlyFigures -onlysig
+   python nOENcmd.py -filename template -onlyFigures -dim 2 4 5
+   python nOENcmd.py -filename template -onlyFigures -dim 2 4 5 -varSelect S3 S5
+   python nOENcmd.py -filename template -onlyFigures -dim 2 4 5 -varSelect S3 S5 -onlysig
    python nOENcmd.py -filename template -varSelect S3 S5
    python nOENcmd.py -filename template -dim 2 4 5
    python nOENcmd.py -filename template -infoinocula
