@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 from getData import extractResults
 
-def ecologicalGrid(fileName, dictR, D = 0, only_sign = False):
+def ecologicalGrid(fileName, dictR, D = 0, varSelect = 0, only_sign = False):
     print('\n>> Plotting...')
     path = '../../Results/'
     nameResults = fileName + '_ecologicalGrid'
@@ -58,10 +58,8 @@ def ecologicalGrid(fileName, dictR, D = 0, only_sign = False):
     elif isinstance(D, int):
         vD = [D]
     else:
-        print(D)
         D.sort()
         vD = list(set(D))
-        print(vD)
     for iD in vD:
         D_field = 'D' + str(iD)
         # Extract combinations
@@ -145,6 +143,14 @@ def ecologicalGrid(fileName, dictR, D = 0, only_sign = False):
                 cleanNames = cleanNames.replace('[', '')
                 cleanNames = cleanNames.replace(']', '')
                 cleanNames = cleanNames.replace("'", '')
+                if not varSelect == 0:
+                    # Check if variable(s) is present in combination `c`
+                    vcVar = []
+                    for ivS in varSelect:
+                        checkVar = np.isin(ivS, iNames)
+                        vcVar.append(checkVar)
+                    if not all(vcVar):
+                        continue
                 mIota, mPval, num_obs, _, mSymU, mSymD = extractResults(dictR, iD, iComb)
                 # Check if correlation(s) are significative
                 check_sign = (mPval[mPval != 0] < 0.051).any()
