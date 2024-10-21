@@ -103,12 +103,6 @@ pip install openpyxl
    ```
    python nOENcmd.py -h
    python nOENcmd.py -filename template -onlysig
-   python nOENcmd.py -filename template -noFigures
-   python nOENcmd.py -filename template -onlyFigures
-   python nOENcmd.py -filename template -onlyFigures -onlysig
-   python nOENcmd.py -filename template -onlyFigures -dim 2 4 5
-   python nOENcmd.py -filename template -onlyFigures -dim 2 4 5 -varSelect S3 S5
-   python nOENcmd.py -filename template -onlyFigures -dim 2 4 5 -varSelect S3 S5 -onlysig
    python nOENcmd.py -filename template -varSelect S3 S5
    python nOENcmd.py -filename template -dim 2 4 5
    python nOENcmd.py -filename template -infoinocula
@@ -121,7 +115,15 @@ pip install openpyxl
    ```
 
 ## Results Visualization
-:construction: Coming soon...
+### Ecological Grid
+For now, only one type of representation is included in **nOEN platform** - the Ecological Grid. For two joint variables (N=2), all data trends are represented in a 2D grid. For more than two joint variables (N>2), each data trend is represented by a separate plot. All plots are saved in new folder started with the name of Excel file in `\Results\` folder (by default, plots are created and saved). Since there is only one type of results visualization, it is not necessary to specify the type of representation. To disable the creation and saving of plots, add `-noFigures` to the command line. If only plots are desired, add `-onlyFigures` to the command line. As when writting results in Excel, the user can specify the dimensions, variables and only significative trends to be represented.
+```
+python nOENcmd.py -filename template -noFigures
+python nOENcmd.py -filename template -onlyFigures
+python nOENcmd.py -filename template -onlyFigures -varSelect S3 S5
+python nOENcmd.py -filename template -onlyFigures -varSelect S3 S5 -dim 2 4 5
+python nOENcmd.py -filename template -onlyFigures -varSelect S3 S5 -dim 2 4 5 -onlysig
+```
 
 ## Contact
 
