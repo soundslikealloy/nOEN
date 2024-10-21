@@ -128,6 +128,24 @@ def loadResults(fileName):
     return readResults
 
 
+def extractResults(dict_, D, idS):
+    D_field = 'D' + str(D)
+    idS = idS
+    varNames = dict_['data']['varNames']
+    iVar = []
+    for i in idS:
+        iVar.append(varNames[i])
+    nameK3_comb = "_".join(iVar)
+    
+    symU = dict_['coeff'][D_field][nameK3_comb]['coeffInfo']['signs1']
+    symD = dict_['coeff'][D_field][nameK3_comb]['coeffInfo']['signs2']
+    iota = dict_['coeff'][D_field][nameK3_comb]['coeffInfo']['iota']
+    pval = dict_['coeff'][D_field][nameK3_comb]['coeffInfo']['iota_pval']
+    num_obs = dict_['coeff'][D_field][nameK3_comb]['numObs']
+    rely = dict_['coeff'][D_field][nameK3_comb]['reliablePoint']
+    
+    return iota, pval, num_obs, rely, symU, symD
+
 def writeResults(fileName, Dim = 0, varSelect = 0, onlySig = False):
     """
     - :input:`fileName` (str). Name of file with data and info.
