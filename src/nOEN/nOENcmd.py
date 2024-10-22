@@ -13,7 +13,7 @@ This module contain functions to run nOEN in Command Prompt.
 import argparse
 
 from stats import nOEN
-from getData import loadData, createDict, writeResults
+from getData import loadData, loadResults, createDict, writeResults
 from plotting import ecologicalGrid
 
 # Command Line Interface (CLI)
@@ -76,4 +76,6 @@ if not onlyRead:
 if excel:
     writeResults(fileName, dim, varSelect, onlySig)
 if figure:
+    if onlyRead:
+        leDict = loadResults(fileName)
     ecologicalGrid(fileName, leDict, dim, varSelect, onlySig)
