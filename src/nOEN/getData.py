@@ -128,6 +128,24 @@ def loadResults(fileName):
     return readResults
 
 
+def extractResults(dict_, D, idS):
+    D_field = 'D' + str(D)
+    idS = idS
+    varNames = dict_['data']['varNames']
+    iVar = []
+    for i in idS:
+        iVar.append(varNames[i])
+    nameK3_comb = "_".join(iVar)
+    
+    symU = dict_['coeff'][D_field][nameK3_comb]['coeffInfo']['signs1']
+    symD = dict_['coeff'][D_field][nameK3_comb]['coeffInfo']['signs2']
+    iota = dict_['coeff'][D_field][nameK3_comb]['coeffInfo']['iota']
+    pval = dict_['coeff'][D_field][nameK3_comb]['coeffInfo']['iota_pval']
+    num_obs = dict_['coeff'][D_field][nameK3_comb]['numObs']
+    rely = dict_['coeff'][D_field][nameK3_comb]['reliablePoint']
+    
+    return iota, pval, num_obs, rely, symU, symD
+
 def writeResults(fileName, Dim = 0, varSelect = 0, onlySig = False):
     """
     - :input:`fileName` (str). Name of file with data and info.
@@ -193,10 +211,14 @@ def writeResults(fileName, Dim = 0, varSelect = 0, onlySig = False):
                         if d == 2:
                             rM = [r['signs1'][0], r['signs2'][0], '-', r['iota'], r['iota_pval']]
                             R = pd.DataFrame([rM], columns = headR)
+                            R[headR[-2:]] = R[headR[-2:]].astype(float)
                         else:
-                            rM = np.array([r['signs1'], r['signs2'], r['deltas'], r['iota'], r['iota_pval']]).T
-                            R = pd.DataFrame(rM, columns = headR)
-                        R.to_excel(writer, sheet_name = sName, startrow = sRow+3, index = False)
+                            rMSings = np.array([r['signs1'], r['signs2']]).T
+                            rMcoeffs = np.array([r['deltas'], r['iota'], r['iota_pval']], dtype = 'float').T
+                            rM = np.append(rMSings, rMcoeffs, axis = 1)
+                            R = pd.DataFrame(rM, columns = headR).infer_objects()
+                            R[headR[-3:]] = R[headR[-3:]].astype(float)
+                        R.to_excel(writer, sheet_name = sName, float_format = '%.4f', startrow = sRow+3, index = False)
             print('>> Writing done.')
         else:
             print(' > Results not written. If you don\'t want to lose existing results files, change the name of existing Excel or make a copy into another folder before.')

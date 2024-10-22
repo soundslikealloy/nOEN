@@ -38,7 +38,9 @@ Spyder is a Python development environment with many features for working with P
 A **Python package** is a collection of files containing Python code (i.e., modules). To execute **nOEN**, the following packages must to be installed:
 - **Numpy.** NumPy is the fundamental package for scientific computing in Python. It is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more. For more info and tutorials, click [here](https://numpy.org/).
 - **Pandas**. Pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language. For more info and tutorials, click [here](https://pandas.pydata.org/).
+- **Matplotlib**. Matplotlib is a library for creatinc static, animated and interactive visualizations in Python. For more info and tutorials, click [here](https://matplotlib.org/).
 - **SciPy**. SciPy is an open-source software for mathematics, science, and engineering. This package provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other. For more info and tutorials, click [here](https://scipy.org/).
+- **Openpyxl**. Openpyxl is a python library to read/write Excel files. For more info and tutorials, click [here](https://openpyxl.readthedocs.io/en/stable/).
 
 ### Installation of packages using Anaconda Navigator
 You can install any Python package using the **Anaconda Navigator**. For this, execute the navigator and click to **Environments**. In this section you can install new packages and delete the already installed. For more info, click [here](https://docs.anaconda.com/free/navigator/).
@@ -54,12 +56,21 @@ pip install numpy
 ```
 pip install pandas
 ```
+**Matplotlib**:
+```
+pip install matplotlib
+```
 **SciPy**:
 ```
 pip install scipy
 ```
+**Openpyxl**:
+```
+pip install openpyxl
+```
+
 ## :clipboard: Instructions to run nOEN using Command Line Interface (CLI)
-1. Download .zip code. Last version: `v0.3`. [Download package](https://github.com/soundslikealloy/nOEN-py/archive/refs/tags/v0.3.zip).
+1. Download .zip code. Last version: `v0.4`. [Download package](https://github.com/soundslikealloy/nOEN-py/archive/refs/tags/v0.4.zip).
 2. Extract files to a destination (:bulb: Recommendation - Desktop).
 3. Open **Anaconda Prompt or Terminal**.
 4. Go to the **Code folder<sup>2</sup>** using `cd` command (more info about [Using Terminal](https://docs.anaconda.com/ae-notebooks/user-guide/basic-tasks/apps/use-terminal/?highlight=Using%20Terminal)).
@@ -74,17 +85,19 @@ pip install scipy
    ```
    python nOENcmd.py -filename example
    ```
-   Results from **nOEN** are saved in .npy (as `FILENAME.npy`) and/or .xlsx (as `FILENAME_results.xlsx`) format in the `/Results` folder.
+   Results from **nOEN** are saved in .npy (as `FILENAME.npy`), .xlsx (as `FILENAME_results.xlsx`) format and/or plotted (see [Results Visualization](#results-visualization)). All nOEN outcomes are saved in `/Results` folder.
    
    **Optional arguments:**
    <table border="0">
-       <tr><td>-h, --help</b></td><td>Show help message and optional arguments.</b></td></tr>
-       <tr><td>-dim</td><td>Dimensions we want to test. Numbers separated by spaces without parenthesis or brakets.</td></tr>
-       <tr><td>-infoinocula</td><td>Information of inocula (or time 0) provided.</td></tr>
-       <tr><td>-noExcel</td><td>Save nOEN results only in '.npy' format.</td></tr>
+       <tr><td>-h, --help</b></td><td> Show help message and optional arguments.</b></td></tr>
+       <tr><td>-dim</td><td> Dimensions we want to test. Numbers separated by spaces without parenthesis or brakets.</td></tr>
+       <tr><td>-infoinocula</td><td> Information of inocula (or time 0) provided.</td></tr>
+       <tr><td>-noExcel</td><td> Save nOEN results only in '.npy' format.</td></tr>
        <tr><td>-onlyExcel</td><td> Create Excel file with existing nOEN results (saved in '.npy' format).</td></tr>
        <tr><td>-varSelect</td><td> Variables we want to write and/or plot. Name of variables separated by spaces without parenthesis or brakets.</td></tr>
        <tr><td>-onlysig</td><td> Only significant results (p < 0.05) are written and/or plotted.</td></tr>
+       <tr><td>-noFigures</td><td> No plotting. Outcomes from nOEN are only saved in Excel.</td></tr>
+       <tr><td>-onlyFigures</td><td> Outcomes from nOEN are only plotted, not saved in Excel.</td></tr>
    </table>
 
    ```
@@ -102,7 +115,15 @@ pip install scipy
    ```
 
 ## Results Visualization
-:construction: Coming soon...
+### Ecological Grid
+For now, only one type of representation is included in **nOEN platform** - the Ecological Grid. For two joint variables (N=2), all data trends are represented in a 2D grid. For more than two joint variables (N>2), each data trend is represented by a separate plot. All plots are saved in new folder started with the name of Excel file in `\Results\` folder (by default, plots are created and saved). Since there is only one type of results visualization, it is not necessary to specify the type of representation. To disable the creation and saving of plots, add `-noFigures` to the command line. If only plots are desired, add `-onlyFigures` to the command line. As when writting results in Excel, the user can specify the dimensions, variables and only significative trends to be represented.
+```
+python nOENcmd.py -filename template -noFigures
+python nOENcmd.py -filename template -onlyFigures
+python nOENcmd.py -filename template -onlyFigures -varSelect S3 S5
+python nOENcmd.py -filename template -onlyFigures -varSelect S3 S5 -dim 2 4 5
+python nOENcmd.py -filename template -onlyFigures -varSelect S3 S5 -dim 2 4 5 -onlysig
+```
 
 ## Contact
 

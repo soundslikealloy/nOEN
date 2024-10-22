@@ -5,3 +5,5 @@ Results/*
 !Results/*.md
 Data/*.xlsx
 !Data/example.xlsx
+*.pyc
+test.py
